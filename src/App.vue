@@ -1,6 +1,6 @@
 <template>
   <div class="appka">
-    <h1> Tabela sygnalizatorów </h1>
+    <h1> Table of signalers </h1>
     <traffic-state :signaler="signaler"/>
   </div>
 </template>
@@ -27,8 +27,9 @@ export default {
     },
     created() {
         wsClient.onopen = () => {
-          // this.signaler = 'connected...';
+          wsClient.send(JSON.stringify({id: 'front'}));
         };
+
         wsClient.onmessage = (msg) => {
           this.signaler = JSON.parse(msg.data);
         };

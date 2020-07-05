@@ -3,22 +3,30 @@
     <table>
       <thead>
       <tr>
+        PERCENTAGE OF GREEN: {{signaler.percentage}}%
+      </tr>
+      <tr>
         <th>HOST URL</th>
         <th>ID</th>
         <th>STATE</th>
       </tr>
       </thead>
       <tbody>
-      <tr v-for="row in signaler">
+      <tr v-for="row in signaler.data" v-bind:key="row.id">
         <td>{{row.url}}</td>
         <td>{{row.id}}</td>
         <td id="state">
             <div>
-              {{row.state}}
-              <canvas width="20" height="20" v-bind:style="{
-                                                            'background-color': row.state,
+              {{row.state.color}}
+              <canvas v-if="row.state.blink === false" width="20" height="20" v-bind:style="{
+                                                            'background-color': row.state.color,
                                                              marginLeft: 3 + 'px',
-                                                             marginTop: 5 + 'px'
+                                                             marginTop: 5 + 'px',
+                                                             }"></canvas>
+              <canvas class="blink" v-else width="20" height="20" v-bind:style="{
+                                                            'background-color': row.state.color,
+                                                             marginLeft: 3 + 'px',
+                                                             marginTop: 5 + 'px',
                                                              }"></canvas>
             </div>
         </td>
@@ -50,6 +58,7 @@ export default {
   #state {
       width: 160px;
       text-align: center;
+      animation: blinker 1s linear infinite;
   }
 
   table {
@@ -81,6 +90,21 @@ export default {
   }
   table td:last-child {
     border-right: none;
+  }
+
+  .blink {
+    animation: blink-animation 1s steps(5, start) infinite;
+    -webkit-animation: blink-animation 1s steps(5, start) infinite;
+  }
+  @keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
+  }
+  @-webkit-keyframes blink-animation {
+    to {
+      visibility: hidden;
+    }
   }
   /*table tbody tr:nth-child(2n) td {*/
   /*  background: #D4D8F9;*/

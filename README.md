@@ -1,29 +1,7 @@
-# vueapp
+# Attention, this code was written on windows os and only on this os was tested.
 
-## Project setup
-```
-npm install
-```
+open terminal in main directory (ex. ster_front-master) and run:
+* npm install
+* npm run serve
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Server should start on:  http://localhost:8080

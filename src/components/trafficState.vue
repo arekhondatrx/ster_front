@@ -106,7 +106,4 @@ export default {
       visibility: hidden;
     }
   }
-  /*table tbody tr:nth-child(2n) td {*/
-  /*  background: #D4D8F9;*/
-  /*}*/
 </style>

@@ -34,9 +34,7 @@ export default {
           this.signaler = JSON.parse(msg.data);
         };
         wsClient.onclose = () => {
-          // this.signaler = 'conection close...';
         }
-
     }
 }
 </script>
